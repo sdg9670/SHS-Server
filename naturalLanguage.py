@@ -124,9 +124,8 @@ class NaturalLanguage():
             self.message = '무슨 말씀인지 잘 모르겠습니다.'
 
     def runProgram(self, pro, func):
-        print('getname')
         pro_name = self.getName(pro)
-        print(pro_name)
+
         if self.program_function[pro][func] == "알람추가":
             self.message = '알람을 추가했습니다.'
         elif self.program_function[pro][func] == "알람삭제":
@@ -134,14 +133,20 @@ class NaturalLanguage():
         elif self.program_function[pro][func] == "알람수정":
             self.message = '알람을 수정했습니다.'
         elif self.program_function[pro][func] == "창문열기":
-            if self.server.checkClientName(pro_name, pro, self.ho, self.dong):
-                self.window.openWindow(pro_name)
+            key = None
+            if pro_name != None:
+                key = self.server.getInClient(pro_name, pro, self.ho, self.dong)
+            if key != None:
+                self.window.openWindow(key)
                 self.message = '창문을 열었습니다.'
             else:
                 self.message = '존재하지 않는 창문입니다.'
         elif self.program_function[pro][func] == "창문닫기":
-            if self.server.checkClientName(pro_name, pro, self.ho, self.dong):
-                self.window.closeWindows(pro_name)
+            key = None
+            if pro_name != None:
+                key = self.server.getInClient(pro_name, pro, self.ho, self.dong)
+            if key != None:
+                self.window.closeWindow(key)
                 self.message = '창문을 닫았습니다.'
             else:
                 self.message = '존재하지 않는 창문입니다.'

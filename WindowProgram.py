@@ -8,10 +8,13 @@ class WindowProgram(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
         self.programs = None
+        self.server = None
+        self.db = None
 
     def setPrograms(self, programs):
         self.programs = programs
         self.server = programs['server']
+        self.db = programs['db']
 
     def run(self):
         while True:
@@ -27,17 +30,10 @@ class WindowProgram(threading.Thread):
             (name, msg[2], msg[3], msg[4], msg[5], msg[6], msg[2], msg[3],
              msg[4], msg[5], msg[6]))
 
-    def openWindow(self, name):
-        self.server.getUserClient()
-        client = self.server.getUserClient(name)
-        if client is None:
-            return None
-        self.server.sendMessage(client, 'openwindow')
-        self.db.updateQuery('update window set status = true where name = %s', (name,))
+    def openWindow(self, key):
+        self.server.sendMessage(self.server.users[key]['client'], 'openwindow')
+        self.db.updateQuery('update `window` set `status` = true where id = %s', (key,))
 
-    def closeWindow(self, name):
-        client = self.server.getUserClient(name)
-        if client is None:
-            return None
-        self.server.sendMessage(client, 'closewindow')
-        self.db.updateQuery('update window set status = false where name = %s', (name,))
+    def closeWindow(self, key):
+        self.server.sendMessage(self.server.users[key]['client'], 'closewindow')
+        self.db.updateQuery('update `window` set `status` = false where id = %s', (key,))

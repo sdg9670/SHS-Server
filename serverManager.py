@@ -92,6 +92,7 @@ class ServerManager(threading.Thread):
         result = result[0]
         lock.acquire()
         self.users[key] = {'client':client, 'address':address, 'id':int(result[0]), 'name':result[1], 'type':int(result[2]), 'ho':int(result[3]), 'dong':int(result[4])}
+        print('접속', self.users[key])
         lock.release()
         return True
 
@@ -139,52 +140,34 @@ class ServerManager(threading.Thread):
                     'update `status` = %s, lux = %s',
                     (self.getUsersName(client), split_msg[2], split_msg[3], split_msg[2], split_msg[3]))
         elif split_msg[0] == "doorlock":
-            if split_msg[1] == "check":
+            if split_msg[1] == "enroll":
                 key = self.getUsersKey(client)
-                fingers = self.db.executeQuery('select finger from fingerprint where dong_id = % s and ho_id = % s', (self.users[key]['dong'], self.users[key]['ho']))
-                score = 0
-                count = 0
-                all = 0
-                for f in fingers:
-                    for s in f[0]:
-                        if split_msg[2][count] != ';':
-                            all += 1
-                            if split_msg[2][count] == s:
-                                score += 1
-                        count += 1
-                    print(score, all)
-                    print(score/all*100)
-                    score = 0
-                    count = 0
-                    all = 0
-
-
-
-
-
-    def getUsersKey(self, client):
-        for k, v in self.users.items():
-            if v['client'] == client:
-                return k
-            else:
-                return None
+                self.db.updateQuery(
+                    'insert into fingerprint values(%s, %s, %s, %s) on duplicate key '
+                    'update finger = %s, dong_id = %s, ho_id = %s',
+                    (key, split_msg[2], self.users[key]['dong'], self.users[key]['ho'], split_msg[2], self.users[key]['dong'], self.users[key]['ho']))
 
     def sendMessageForType(self, type, msg):
-        for k, v in self.users.items():
-            if v['type'] == type:
-                print(v['client'])
-                self.sendMessage(v['client'], msg)
+        for k in self.users:
+            if self.users[k]['type'] == type:
+                self.sendMessage(self.users[k]['client'], msg)
 
-    def checkClientName(self, name, type, ho, dong):
-        for user in self.users.values():
-            if user['name'] == name and user['type'] == type and user['ho'] == ho and user['dong'] == dong:
-                return True
-        return False
+    def getUsersKey(self, client):
+        for k in self.users:
+            if self.users[k]['client'] == client:
+                return k
+        return None
+
+    def getInClient(self, name, type, ho, dong):
+        for key in self.users:
+            if self.users[key]['name'] == name and self.users[key]['type'] == type and self.users[key]['ho'] == ho and self.users[key]['dong'] == dong:
+                return key
+        return None
 
     def getUserClient(self, name):
-        for k, v in self.users.items():
-            if v['name'] == name:
-                return v['client']
+        for k in self.users:
+            if self.users[k]['name'] == name:
+                return self.users[k]['client']
             else:
                 return None
 
