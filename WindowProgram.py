@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import threading
 import time
 
 
 class WindowProgram(threading.Thread):
     def __init__(self):
+        threading.Thread.__init__(self)
         self.programs = None
 
     def setPrograms(self, programs):
@@ -13,6 +16,7 @@ class WindowProgram(threading.Thread):
     def run(self):
         while True:
             self.server.sendMessageForType(2, 'requestinfo')
+            print('창문 정보 전송 요청')
             time.sleep(300)
 
     def updateWindowsData(self, name, msg):
@@ -24,9 +28,16 @@ class WindowProgram(threading.Thread):
              msg[4], msg[5], msg[6]))
 
     def openWindow(self, name):
-        self.server.sendMessage(self.server.getUserClient(name), 'openwindow')
+        self.server.getUserClient()
+        client = self.server.getUserClient(name)
+        if client is None:
+            return None
+        self.server.sendMessage(client, 'openwindow')
         self.db.updateQuery('update window set status = true where name = %s', (name,))
 
     def closeWindow(self, name):
-        self.server.sendMessage(self.server.getUserClient(name), 'closewindow')
+        client = self.server.getUserClient(name)
+        if client is None:
+            return None
+        self.server.sendMessage(client, 'closewindow')
         self.db.updateQuery('update window set status = false where name = %s', (name,))
