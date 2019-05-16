@@ -146,6 +146,9 @@ class ServerManager(threading.Thread):
                     'insert into fingerprint values(%s, %s, %s, %s) on duplicate key '
                     'update finger = %s, dong_id = %s, ho_id = %s',
                     (key, split_msg[2], self.users[key]['dong'], self.users[key]['ho'], split_msg[2], self.users[key]['dong'], self.users[key]['ho']))
+            elif split_msg[1] == "image":
+                img_data = split_msg[2]
+
 
     def sendMessageForType(self, type, msg):
         for k in self.users:

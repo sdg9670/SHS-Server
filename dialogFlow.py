@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import json
 import dialogflow_v2 as df
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "dialog.json"
 def detect_intent_texts(project_id, session_id, text, language_code):
@@ -28,7 +29,6 @@ def detect_intent_texts(project_id, session_id, text, language_code):
         response.query_result.intent_detection_confidence))
     print('Fulfillment text: {}\n'.format(
         response.query_result.fulfillment_text))
-    print(response.query_result.parameters)
     print('ky' + response.query_result.parameters['date-time'.encode()])
     print('ky2' + response.query_result.parameters['AlarmContent'.encode()])
 while True:
