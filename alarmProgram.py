@@ -1,23 +1,43 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
+import json
 
 class AlarmProgram():
-    def __init__(self, programs):
+    def __init__(self):
+
+        self.programs = None
+        self.server = None
+        self.db = None
+        self.alarms = {}
+
+    def setPrograms(self, programs):
         self.programs = programs
+        self.server = programs['server']
         self.db = programs['db']
-        self.alarms = []
 
-    def addAlarm(self, date, time, week, content, username):
-        self.db.updateSQL(
-            'insert into alarm (date, time, week, content, userid) values (%s, %s, %s, %s, (select id from user where name = %s))'
-            , (date, time, week, content, username))
+    def addAlarm2(self, datetime, clientid):
+        self.db.updateQuery(
+            'insert into alarm (datetime, client_id) values (%s, %s)'
+            , (datetime, clientid))
 
-    def updateAlarm(self, id, date, week, content):
-        self.db.updateSQL('update alarm set date = %s, week = %s, content = %s where id=%s', (date, week, content, id))
+    def addAlarm(self, datetime, content, clientid):
+        self.db.updateQuery(
+            'insert into alarm (datetime, content, client_id) values (%s, %s, %s)'
+            , (datetime, content, clientid))
 
-    def removeAlarm(self, id):
-        self.db.updateSQL('dalete from alarm where id=%s', (id,))
+    def updateAlarm(self, datetime1, datetime2, clientid):
+        self.db.updateQuery('update alarm set datetime = %s where datetime=%s and client_id = %s', (datetime2, datetime1, clientid))
 
-    def loadAlarm(self):
-        result = self.db.excuteSQL('select * from alarm')
-        for i in result:
-            self.alarms.append(list(i))
+    def removeAlarm(self, datetime, clientid):
+        self.db.updateQuery('delete from alarm where datetime=%s and client_id = %s', (datetime, clientid))
+
+    def loadAlarm(self, clientid):
+        data = self.db.executeQuery('select * from alarm where client_id = %s and datetime > now()', (clientid))
+        dic = {}
+        for index in data:
+            dic[str(index[0])] = {'datetime':index[1].strftime('%Y/%m/%d %H:%M:%S'), 'content':index[2], 'clientid':index[3]}
+        return json.dumps(dic)
+
+
+    def getDatetime(self, dt):
+        return datetime.strptime(dt, '%Y-%m-%dT%H:%M:%S+09:00')

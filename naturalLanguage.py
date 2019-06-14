@@ -1,176 +1,56 @@
 # -*- coding: utf-8 -*-
 
-from konlpy.tag import Mecab
+import json
+import dialogflow_v2 as df
 
 
+#detect_intent_texts('newagent-855b9', 'arrsrrssd', input(), 'ko-KR')
 class NaturalLanguage():
-    def __init__(self, programs):
-        self.programs = programs
-        self.server = self.programs['server']
-        self.db = self.programs['db']
-        self.window = self.programs['window']
-        self.mecab = Mecab()
+    def __init__(self, project_id, session_id, text, language_code):
+        session_client = df.SessionsClient()
+        session = session_client.session_path(project_id, session_id)
+        text_input = df.types.TextInput(
+            text=text, language_code=language_code)
+        query_input = df.types.QueryInput(text=text_input)
+        response = session_client.detect_intent(
+            session=session, query_input=query_input)
 
-        self.text = ''
-        self.divide_text = ''
-        self.name = ''
-        self.ho = 0;
-        self.dong = 0;
-        self.program_function = {
-            1: {1: "알람추가", 2: "알람삭제", 2: "알람수정"},
-            2: {1: "창문열기", 2: "창문닫기"},
-            3: {1: "커튼열기", 2: "커튼닫기"}
+        parameter_dict = {}
+
+        for key in response.query_result.parameters:
+            key2_data = {}
+            for key2 in response.query_result.parameters[key.encode()]:
+                if len('{}'.format(key2)) > 1:
+                    key2_data['{}'.format(key2)] = response.query_result.parameters[key.encode()][key2.encode()]
+            if len(key2_data.keys()) > 0:
+                if len(key2_data.keys()) == 1:
+                    for k, v in key2_data.items():
+                        value = v
+                else:
+                    value = key2_data
+            else:
+                value = '{}'.format(response.query_result.parameters[key.encode()])
+            if value != '':
+                parameter_dict['{}'.format(key)] = value
+
+        self.dic = {
+                'parameters': parameter_dict,
+                'query_text': '{}'.format(response.query_result.query_text),
+                'display_name': '{}'.format(response.query_result.intent.display_name),
+                'confidence': float('{}'.format(response.query_result.intent_detection_confidence)),
+                'fulfillment_text': '{}'.format(response.query_result.fulfillment_text)
         }
 
-        self.ex_word = [('SN', '-'), ('NNBC', '-'), ('NR', '-'),
-                   ('MM', '한'), ('MM', '두'), ('MM', '세'), ('MM', '네'),
-                   ('MAG', '내일'), ('MAG', '어제'), ('NNG', '모래'), ('NNG', '아침'), ('NNG', '점심'), ('NNG', '저녁'),
-                   ('NNG', '오전'), ('NNG', '오후'), ('NNG', '새벽'), ('NNG', '밤'),
-                   ('NNG', '월'), ('NNG', '화'), ('NNG', '수'), ('NNG', '목'), ('NNG', '금'), ('NNG', '토'), ('NNG', '일'),
-                   ('NNG', '월요일'), ('NNG', '화요일'), ('NNG', '수요일'), ('NNG', '목요일'), ('NNG', '금요일'), ('NNG', '토요일'),
-                   ('NNG', '일요일'), ]
+    def getParameter(self):
+        return self.dic['parameters']
 
-        self.word_freq_vector = {}
-        self.word_count = {}
-        self.func_count = {}
-        self.message = ''
-        for p, fs in self.program_function.items():
-            for f in fs.keys():
-                self.word_freq_vector[(p, f)] = 0
-                self.word_count[(p, f)] = 0
-                self.func_count[(p, f)] = 0
+    def getData(self):
+        data = self.dic['fulfillment_text'].split(']')[0][1:]
+        data = data.split('-')
+        for i in [0,1,3]:
+            data[i] = int(data[i])
+        return data
 
-    def divideText(self, text):
-        return self.mecab.pos(text)
+    def getText(self):
+        return self.dic['fulfillment_text'].split('] ')[1]
 
-    """
-    
-    단어들의 빈도수의 합 / 실행 횟수 * 단어의 갯수
-    
-    단어들 정보
-    select program, `function`, frequency from word_data where  word = '내일' and part = 'MAG' or word = '맞춰' and part = 'VV+EC';
-    word_freq_vector[(program,function)] += frequency
-    단어들 갯수
-    word_count[(program,function)] ++;
-    
-    실행 횟수
-    select * from function_count
-    func_count[(program,function)] = count
-    
-    """
-
-    def loadFunctionData(self):
-        data = self.db.executeQuery('select * from function_count', ())
-        for func in data:
-            self.func_count[(func[0], func[1])] = func[2]
-
-    def loadWordData(self, d_text):
-        string = 'select program, `function`, frequency from word_data where '
-        i = 0;
-        set_text = set(d_text)
-        sql_value = []
-        for hts in set_text:
-            if i == 0:
-                string += 'word = %s and part = %s '
-            else:
-                string += 'or word = %s and part = %s '
-            sql_value.append(hts[0])
-            sql_value.append(hts[1])
-            i += 1
-        data = self.db.executeQuery(string, tuple(sql_value))
-        for row in data:
-            self.word_freq_vector[(row[0], row[1])] += row[2]
-            self.word_count[(row[0], row[1])] += 1
-
-    def getFreqPer(self):
-        preq_per = {}
-        for p, fs in self.program_function.items():
-            for f in fs.keys():
-                try:
-                    preq_per[(p, f)] = self.word_freq_vector[(p, f)] / self.func_count[(p, f)] * self.word_count[(p, f)]
-                except ZeroDivisionError:
-                    preq_per[(p, f)] = 0
-                    continue
-        return preq_per
-
-    def getMostFunc(self, freqPer):
-        most_key = None
-        most_value = 0
-        for key, value in freqPer.items():
-            if value > most_value:
-                most_key = key
-                most_value = value
-        if most_key is None:
-            return None
-        return (most_key, most_value)
-
-    def analysisText(self, text, name, ho, dong):
-        self.text = text
-        self.loadFunctionData()
-        self.divide_text = self.divideText(text)
-        self.loadWordData(self.divide_text)
-
-        self.name = name;
-        self.ho = ho
-        self.dong = dong
-
-        per = self.getFreqPer()
-        pro = self.getMostFunc(per)
-        if pro is not None:
-            print(pro[0][0], pro[1])
-            self.runProgram(pro[0][0], pro[0][1])
-            self.saveDivideText(pro[0][0], pro[0][1])
-        else:
-            self.message = '무슨 말씀인지 잘 모르겠습니다.'
-
-    def runProgram(self, pro, func):
-        pro_name = self.getName(pro)
-
-        if self.program_function[pro][func] == "알람추가":
-            self.message = '알람을 추가했습니다.'
-        elif self.program_function[pro][func] == "알람삭제":
-            self.message = '알람을 삭제했습니다.'
-        elif self.program_function[pro][func] == "알람수정":
-            self.message = '알람을 수정했습니다.'
-        elif self.program_function[pro][func] == "창문열기":
-            key = None
-            if pro_name != None:
-                key = self.server.getInClient(pro_name, pro, self.ho, self.dong)
-            if key != None:
-                self.window.openWindow(key)
-                self.message = '창문을 열었습니다.'
-            else:
-                self.message = '존재하지 않는 창문입니다.'
-        elif self.program_function[pro][func] == "창문닫기":
-            key = None
-            if pro_name != None:
-                key = self.server.getInClient(pro_name, pro, self.ho, self.dong)
-            if key != None:
-                self.window.closeWindow(key)
-                self.message = '창문을 닫았습니다.'
-            else:
-                self.message = '존재하지 않는 창문입니다.'
-        elif self.program_function[pro][func] == "커튼열기":
-            self.message = '커튼을 열었습니다.'
-        elif self.program_function[pro][func] == "커튼닫기":
-            self.message = '커튼을 닫았습니다.'
-
-
-    def saveDivideText(self, pro, func):
-        self.db.updateQuery('insert into `function_count` values(%s, %s, 1) on duplicate key update `count` = `count`+1',
-            (pro, func))
-        for word, part in self.divide_text:
-            if part[0] == 'N' or part[0] == 'V' or part[0] == 'M' or part[0] == 'I':
-                for epart, eword in self.ex_word:
-                    if not (eword == '-' and epart == part or eword == word and epart == part):
-                        self.db.updateQuery('insert into `word_data` values(%s, %s, %s, %s, 1) on duplicate key update `frequency` = `frequency`+1',
-                                            (word, part, pro, func))
-                        break
-
-    def getMessage(self):
-        return self.message
-
-    def getName(self, pro):
-        if pro == 2:
-            return self.divide_text[self.divide_text.index(('창문', 'NNG')) - 1][0]
-        return None

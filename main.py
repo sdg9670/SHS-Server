@@ -3,24 +3,34 @@
 import serverManager
 import databaseManager
 import windowProgram
-
+import alarmProgram
+import curtainProgram
+import os
 
 # import alarmProgram
 
 class Main:
     def __init__(self):
         self.programs = {}
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "dialog.json"
 
     def start(self):
         try:
             self.programs['db'] = databaseManager.DatabaseManager('localhost', 'root', '!Dasom0129', 'shs')
             self.programs['server'] = serverManager.ServerManager('', 9670)
             self.programs['window'] = windowProgram.WindowProgram()
+            self.programs['curtain'] = curtainProgram.CurtainProgram()
+            self.programs['alarm'] = alarmProgram.AlarmProgram()
 
             self.programs['server'].setPrograms(self.programs)
             self.programs['server'].start()
             self.programs['window'].setPrograms(self.programs)
             self.programs['window'].start()
+            self.programs['curtain'].setPrograms(self.programs)
+            self.programs['curtain'].start()
+            self.programs['alarm'].setPrograms(self.programs)
+
+            self.programs['alarm'].loadAlarm(1)
 
         except KeyboardInterrupt:
             print('[System] SHS 서버를 종료합니다.')

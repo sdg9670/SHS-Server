@@ -17,6 +17,11 @@ class DatabaseManager():
             cursor.execute(content, value)
             self.conn.commit()
 
+    def executeQuery2(self, content):
+        with self.conn.cursor() as cursor:
+            cursor.execute(content)
+            return cursor.fetchall()
+
     def executeQuery(self, content, value):
         with self.conn.cursor() as cursor:
             cursor.execute(content, value)
