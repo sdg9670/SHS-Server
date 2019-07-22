@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24f2166a-5050-4f04-993c-cef24f973ec0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -424,7 +424,7 @@
       <workItem from="1562639939886" duration="5008000" />
       <workItem from="1563161376875" duration="819000" />
       <workItem from="1563417344614" duration="9797000" />
-      <workItem from="1563770252228" duration="169000" />
+      <workItem from="1563770252228" duration="256000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1554459392061</created>
@@ -493,7 +493,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259934000" />
+    <option name="totallyTimeSpent" value="260021000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -508,7 +508,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21520342" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21520342" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -519,10 +519,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.12889813" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" visible="true" weight="0.20575221" />
+      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" weight="0.20575221" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32952183" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32841823" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32743362" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5010661" side_tool="true" weight="0.32841823" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32744282" />
       <window_info anchor="bottom" id="Messages" order="14" />
@@ -853,7 +853,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
