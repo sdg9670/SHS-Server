@@ -68,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -424,7 +424,7 @@
       <workItem from="1562639939886" duration="5008000" />
       <workItem from="1563161376875" duration="819000" />
       <workItem from="1563417344614" duration="9797000" />
-      <workItem from="1563770252228" duration="256000" />
+      <workItem from="1563770252228" duration="375000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1554459392061</created>
@@ -493,7 +493,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260021000" />
+    <option name="totallyTimeSpent" value="260140000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -853,7 +853,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
