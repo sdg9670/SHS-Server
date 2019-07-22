@@ -10,6 +10,10 @@ class AlarmProgram():
         self.db = None
         self.alarms = {}
 
+    def json_default(self, value):
+        if isinstance(value, datetime):
+            return value.__str__()
+
     def setPrograms(self, programs):
         self.programs = programs
         self.server = programs['server']
@@ -32,12 +36,12 @@ class AlarmProgram():
         self.db.updateQuery('delete from alarm where datetime=%s and client_id = %s', (datetime, clientid))
 
     def loadAlarm(self, clientid):
-        data = self.db.executeQuery('select * from alarm where client_id = %s and datetime > now()', (clientid))
+        data = self.db.executeQuery('select * from alarm where client_id = %s and datetime > now()', (clientid,))
         dic = {}
         for index in data:
-            dic[str(index[0])] = {'datetime':index[1].strftime('%Y/%m/%d %H:%M:%S'), 'content':index[2], 'clientid':index[3]}
-        return json.dumps(dic)
-
+            print(str(list(index.values())[0]))
+            dic[list(index.values())[0]] = index
+        return json.dumps(dic, default=self.json_default)
 
     def getDatetime(self, dt):
         return datetime.strptime(dt, '%Y-%m-%dT%H:%M:%S+09:00')

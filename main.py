@@ -5,6 +5,7 @@ import databaseManager
 import windowProgram
 import alarmProgram
 import curtainProgram
+import sensorProgram
 import os
 
 # import alarmProgram
@@ -21,6 +22,7 @@ class Main:
             self.programs['window'] = windowProgram.WindowProgram()
             self.programs['curtain'] = curtainProgram.CurtainProgram()
             self.programs['alarm'] = alarmProgram.AlarmProgram()
+            self.programs['sensor'] = sensorProgram.SensorProgram()
 
             self.programs['server'].setPrograms(self.programs)
             self.programs['server'].start()
@@ -28,9 +30,9 @@ class Main:
             self.programs['window'].start()
             self.programs['curtain'].setPrograms(self.programs)
             self.programs['curtain'].start()
+            self.programs['sensor'].setPrograms(self.programs)
+            self.programs['sensor'].start()
             self.programs['alarm'].setPrograms(self.programs)
-
-            self.programs['alarm'].loadAlarm(1)
 
         except KeyboardInterrupt:
             print('[System] SHS 서버를 종료합니다.')

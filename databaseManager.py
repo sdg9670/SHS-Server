@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import pymysql.cursors
+import pymysql
 
 
 class DatabaseManager():
@@ -7,15 +7,21 @@ class DatabaseManager():
         self.conn = pymysql.connect(host=hosts,
                                     user=users,
                                     password=passwords,
-                                    db=dbs)
+                                    db=dbs,
+                                    cursorclass=pymysql.cursors.DictCursor
+                                    )
 
     def dbClose(self):
         self.conn.close()
 
     def updateQuery(self, content, value):
+        id = 0
         with self.conn.cursor() as cursor:
             cursor.execute(content, value)
+            id = cursor.lastrowid
             self.conn.commit()
+        return id
+
 
     def executeQuery2(self, content):
         with self.conn.cursor() as cursor:
@@ -25,6 +31,7 @@ class DatabaseManager():
     def executeQuery(self, content, value):
         with self.conn.cursor() as cursor:
             cursor.execute(content, value)
+
             return cursor.fetchall()
 
     def executeOneQuery(self, content, value):

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import json
 import socket
 import threading
 from datetime import datetime
@@ -10,6 +10,8 @@ from crawler.crawler import crawl
 from crawler.weatherToday import weatherToday
 from crawler.weatherTomorrow import weatherTomorrow
 from crawler.weatherAfterTommorow import weatherAfterTommorow
+import requests
+
 lock = threading.Lock()
 
 
@@ -31,6 +33,7 @@ class ServerManager(threading.Thread):
         self.window = programs['window']
         self.alarm = programs['alarm']
         self.curtain = programs['curtain']
+        self.sensor = programs['sensor']
 
     def run(self):
         self.sock.listen(5)
@@ -43,6 +46,7 @@ class ServerManager(threading.Thread):
         size = 1024
 
         key = int(client.recv(size).decode('utf-8'))
+        print(key)
         if not self.addUser(key, client, address):
             client.close()
             return
@@ -51,19 +55,19 @@ class ServerManager(threading.Thread):
         print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
 
         while True:
-            try:
+            #try:
                 data = client.recv(size)
                 if data:
                     self.searchProgram(client, str(data.decode('utf-8')))
                 else:
                     raise ValueError('클라이언트 종료')
-            except Exception as e:
-                print('[System] %s %s 종료함' % (self.users[key]['address'], self.users[key]['address']))
-                self.removeUser(key)
-                client.close()
-                print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
-                print('[System] Error: %s' % e)
-                break
+            #except Exception as e:
+                    print('[System] %s %s 종료함' % (self.users[key]['address'], self.users[key]['address']))
+                    self.removeUser(key)
+                    client.close()
+                    print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
+                    print('[System] Error: %s' % e)
+            #       break
 
 
     def getSocket(self):
@@ -84,9 +88,12 @@ class ServerManager(threading.Thread):
         if result is None:
             print('[Server] $s 등록되지 않은 클라이언트\n' % key)
             return False
-        result = result[0]
+        print(result)
+        key = list(result[0].values())[0]
         lock.acquire()
-        self.users[key] = {'client':client, 'address':address, 'id':int(result[0]), 'password':result[1], 'name':result[2], 'type':int(result[3]), 'ho':int(result[4]), 'dong':int(result[5])}
+        self.users[list(result[0].values())[0]] = result[0]
+        self.users[key]['client'] = client
+        self.users[key]['address'] = address
         print('접속', self.users[key])
         lock.release()
         return True
@@ -118,9 +125,13 @@ class ServerManager(threading.Thread):
                 elif func[2] == 'Q':
                     self.sendMessage(client, 'msg\tq\t' + nal.getText())
             elif split_msg[1] == "getalarm":
-                self.sendMessage(client, 'getalarm\t' + self.alarm.loadAlarm(self.getUsersKey(client)))
-
-
+                alarmlist = self.alarm.loadAlarm(self.getUsersKey(client))
+                if alarmlist is not None:
+                    self.sendMessage(client, 'getalarm\t' + alarmlist)
+            elif split_msg[1] == "help":
+                data = {'title': '네이봇 [도움요청]', 'message': str(self.users[self.getUsersKey(client)]['dong']) + '동 ' +  str(self.users[self.getUsersKey(client)]['ho']) + '호에서 긴급 도움을 요청하였습니다.', 'dong': self.users[self.getUsersKey(client)]['dong']}
+                requests.post('http://simddong.ga:5001/sendfcm_dong', data=json.dumps(data), headers={'Content-type': 'application/json', 'Accept': 'text/plain'})
+                self.sendMessage(client, 'msg\ta\t도움 요청이 전송되었습니다.')
         elif split_msg[0] == "sensor":
             if split_msg[1] == "inputsql":
                 # split_msg[2] 온도, split_msg[3] 습도, split_msg[4]가스
@@ -161,11 +172,16 @@ class ServerManager(threading.Thread):
             if split_msg[1] == "enroll":
                 key = self.getUsersKey(client)
                 self.db.updateQuery(
-                    'insert into fingerprint values(%s, %s, %s, %s) on duplicate key '
-                    'update finger = %s, dong_id = %s, ho_id = %s',
+                    'insert into fingerprint (finger, dong, ho) values(%s, %s, %s, %s) on duplicate key '
+                    'update finger = %s, dong = %s, ho = %s',
                     (key, split_msg[2], self.users[key]['dong'], self.users[key]['ho'], split_msg[2], self.users[key]['dong'], self.users[key]['ho']))
             elif split_msg[1] == "image":
-                img_data = split_msg[2]
+                data = {'title': '네이봇 [도어락]', 'message': split_msg[3] + '에 도어락 틀림이 감지되었습니다.', 'ho': self.users[self.getUsersKey(client)]['ho'], 'dong': self.users[self.getUsersKey(client)]['dong']}
+                requests.post('http://simddong.ga:5001/sendfcm_ho_dong', data=json.dumps(data), headers={'Content-type': 'application/json', 'Accept': 'text/plain'})
+                key = self.getUsersKey(client)
+                self.db.updateQuery(
+                    'insert into doorlock_image (path, upload_time, state, dong, ho) values(%s, %s, %s, %s, %s)',
+                    (split_msg[2], split_msg[3], split_msg[4], self.users[key]['dong'], self.users[key]['ho']))
 
     def runProgram(self, client, program, function, type, parameter):
         if program == 1:
