@@ -148,7 +148,6 @@ class ServerManager(threading.Thread):
                     split_msg[2] = False
                 elif split_msg[2] == "true":
                     split_msg[2] = True
-                print(split_msg[2], split_msg[3], split_msg[4], split_msg[5], split_msg[6])
                 self.db.updateQuery(
                     'insert into `window` (id, status, temp, humi, rain, dust)  values(%s, %s, %s, %s, %s, %s) on duplicate key '
                     'update `status` = %s and temp = %s and humi = %s and rain = %s and dust = %s',
@@ -162,7 +161,6 @@ class ServerManager(threading.Thread):
                     split_msg[2] = False
                 elif split_msg[2] == "true":
                     split_msg[2] = True
-                print(split_msg[2], split_msg[3])
                 self.db.updateQuery(
                     'insert into `curtain` (id, `status`, lux) values(%s, %s, %s) on duplicate key '
                     'update `status` = %s, lux = %s',
