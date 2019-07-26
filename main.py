@@ -6,6 +6,7 @@ import windowProgram
 import alarmProgram
 import curtainProgram
 import sensorProgram
+import compareProgram
 import os
 
 # import alarmProgram
@@ -23,6 +24,7 @@ class Main:
             self.programs['curtain'] = curtainProgram.CurtainProgram()
             self.programs['alarm'] = alarmProgram.AlarmProgram()
             self.programs['sensor'] = sensorProgram.SensorProgram()
+            self.programs['compare'] = compareProgram.CompareProgram()
 
             self.programs['server'].setPrograms(self.programs)
             self.programs['server'].start()
@@ -33,6 +35,8 @@ class Main:
             self.programs['sensor'].setPrograms(self.programs)
             self.programs['sensor'].start()
             self.programs['alarm'].setPrograms(self.programs)
+            self.programs['compare'].setPrograms(self.programs)
+            self.programs['compare'].start()
 
         except KeyboardInterrupt:
             print('[System] SHS 서버를 종료합니다.')
