@@ -20,7 +20,7 @@ class WindowProgram(threading.Thread):
         while True:
             print('창문 정보 전송 요청')
             self.server.sendMessageForType(2, 'requestinfo')
-            time.sleep(30)
+            time.sleep(10)
 
     def updateWindowsData(self, name, msg):
         # split_msg[2] 열림/닫힘, split_msg[3] 온도, split_msg[4] 습도, split_msg[5] 강우량, split_msg[6] 먼지

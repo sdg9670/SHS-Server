@@ -138,7 +138,7 @@ class ServerManager(threading.Thread):
                 self.db.updateQuery(
                     'insert into sensor values(%s, %s, %s, %s) on duplicate key '
                     'update temp = %s, humi = %s, gas = %s',
-                    (self.getUsersName(client), split_msg[2], split_msg[3], split_msg[4], split_msg[2], split_msg[3],
+                    (self.getUsersKey(client), split_msg[2], split_msg[3], split_msg[4], split_msg[2], split_msg[3],
                      split_msg[4]))
 
         elif split_msg[0] == "window":
