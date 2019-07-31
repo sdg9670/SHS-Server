@@ -136,23 +136,21 @@ class ServerManager(threading.Thread):
             if split_msg[1] == "inputsql":
                 # split_msg[2] 온도, split_msg[3] 습도, split_msg[4]가스
                 self.db.updateQuery(
-                    'insert into sensor values(%s, %s, %s, %s) on duplicate key '
-                    'update temp = %s, humi = %s, gas = %s',
-                    (self.getUsersKey(client), split_msg[2], split_msg[3], split_msg[4], split_msg[2], split_msg[3],
-                     split_msg[4]))
+                    'update `sensor` set `temp` = %s, `humi` = %s, `gas` = %s where id = %s',
+                    (split_msg[2], split_msg[3], split_msg[4], self.getUsersKey(client)))
 
         elif split_msg[0] == "window":
             if split_msg[1] == "inputsql":
+                print(split_msg[2])
                 #상태 온도 습도 강수량 미세먼지
                 if split_msg[2] == "false":
                     split_msg[2] = False
                 elif split_msg[2] == "true":
                     split_msg[2] = True
+                print(split_msg[2])
                 self.db.updateQuery(
-                    'insert into `window` (id, status, temp, humi, rain, dust)  values(%s, %s, %s, %s, %s, %s) on duplicate key '
-                    'update `status` = %s and temp = %s and humi = %s and rain = %s and dust = %s',
-                    (self.getUsersKey(client), split_msg[2], split_msg[3], split_msg[4], split_msg[5], split_msg[6],
-                     split_msg[2], split_msg[3], split_msg[4], split_msg[5], split_msg[6]))
+                    'update `window` set `status` = %s, temp = %s, humi = %s, rain = %s, dust = %s where id = %s',
+                    (split_msg[2], split_msg[3], split_msg[4], split_msg[5], split_msg[6], self.getUsersKey(client)))
 
         elif split_msg[0] == "curtain":
             if split_msg[1] == "inputsql":
@@ -162,9 +160,8 @@ class ServerManager(threading.Thread):
                 elif split_msg[2] == "true":
                     split_msg[2] = True
                 self.db.updateQuery(
-                    'insert into `curtain` (id, `status`, lux) values(%s, %s, %s) on duplicate key '
-                    'update `status` = %s, lux = %s',
-                    (self.getUsersKey(client), split_msg[2], split_msg[3], split_msg[2], split_msg[3]))
+                    'update `curtain` set `status` = %s, lux = %s where id = %s',
+                    (split_msg[2], split_msg[3], self.getUsersKey(client)))
 
         elif split_msg[0] == "doorlock":
             if split_msg[1] == "enroll":
