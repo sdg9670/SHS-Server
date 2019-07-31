@@ -45,3 +45,18 @@ class AlarmProgram():
 
     def getDatetime(self, dt):
         return datetime.strptime(dt, '%Y-%m-%dT%H:%M:%S+09:00')
+
+    def dateToString(self, dt):
+        return self.getDatetime(dt).strftime('%Y년 %m월 %d일 %H시 %M분 %S초')
+
+    def contentAnal(self, string):
+        a = ''
+        if string.find('으라고', len(string) - 3):
+            a = string.split('으라고')[0] + '기'
+        elif string.find('라고', len(string) - 2):
+            a = string.split('라고')[0] + '기'
+        elif string.find('게', len(string) - 1):
+            a = string.split('게')[0] + '기'
+        elif string.find('로', len(string) - 1):
+            a = string.split('로')[0]
+        return a

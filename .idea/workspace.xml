@@ -4,7 +4,7 @@
     <list default="true" id="24f2166a-5050-4f04-993c-cef24f973ec0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compareProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/compareProgram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alarmProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/alarmProgram.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serverManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/serverManager.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/serverManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2454">
-              <caret line="201" column="27" lean-forward="true" selection-start-line="201" selection-start-column="27" selection-end-line="201" selection-end-column="27" />
+            <state relative-caret-position="363">
+              <caret line="200" column="141" selection-start-line="200" selection-start-column="141" selection-end-line="200" selection-end-column="141" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compareProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="257">
               <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
             </state>
           </provider>
@@ -77,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alarmProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="46" column="63" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
+            <state relative-caret-position="428">
+              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
               </folding>
@@ -87,9 +87,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sensorProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state relative-caret-position="268">
               <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding>
                 <element signature="e#25#41#0" expanded="true" />
@@ -101,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/databaseManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state relative-caret-position="380">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
               </folding>
@@ -121,8 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>curtain</find>
-      <find>closeCurtain</find>
       <find>True</find>
       <find>print</find>
       <find>input</find>
@@ -151,6 +158,8 @@
       <find>executeQuery</find>
       <find>conn</find>
       <find>date</find>
+      <find>contentAnal</find>
+      <find>fingerprint</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -448,7 +457,7 @@
       <workItem from="1563770252228" duration="375000" />
       <workItem from="1564107227544" duration="18807000" />
       <workItem from="1564386984651" duration="5152000" />
-      <workItem from="1564540827988" duration="1736000" />
+      <workItem from="1564540827988" duration="4340000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1554459392061</created>
@@ -534,11 +543,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564131357428</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="온습도 가스로 창문 조절 완료">
+      <created>1564556596106</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564556596106</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288405000" />
+    <option name="totallyTimeSpent" value="291009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -551,19 +567,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22537473" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32964602" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.38081396" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.38053098" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.12889813" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" visible="true" weight="0.2699115" />
+      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" weight="0.2699115" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32952183" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32743362" />
@@ -613,14 +630,15 @@
     <MESSAGE value="다이얼로그 변경 전" />
     <MESSAGE value="중간 완료" />
     <MESSAGE value="수정완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="수정완료" />
+    <MESSAGE value="온습도 가스로 창문 조절 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="온습도 가스로 창문 조절 완료" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SHS_Server$weatherToday.coverage" NAME="weatherToday Coverage Results" MODIFIED="1558870012357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
     <SUITE FILE_PATH="coverage/SHS_Server$Web__1_.coverage" NAME="Web (1) Coverage Results" MODIFIED="1563424189191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$inputWordData.coverage" NAME="inputWordData Coverage Results" MODIFIED="1557223973639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$Web.coverage" NAME="Web Coverage Results" MODIFIED="1563423698639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SHS_Server$main.coverage" NAME="main Coverage Results" MODIFIED="1564133589145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SHS_Server$main.coverage" NAME="main Coverage Results" MODIFIED="1564558990356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$asdasd.coverage" NAME="asdasd Coverage Results" MODIFIED="1558860917106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$test.coverage" NAME="test Coverage Results" MODIFIED="1557921319031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$weatherAfterTommorow.coverage" NAME="weatherAfterTommorow Coverage Results" MODIFIED="1558870141690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
@@ -703,7 +721,6 @@
     <entry file="file://$PROJECT_DIR$/WordData/알람수정.txt" />
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/protocol.py" />
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/connections.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py" />
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/-1382175924/flask/app.py" />
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/-1382175924/flask/globals.py" />
     <entry file="file://$USER_HOME$/Downloads/wiki_crawler.py" />
@@ -846,19 +863,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alarmProgram.py">
+    <entry file="file://$PROJECT_DIR$/compareProgram.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="46" column="63" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
-          <folding>
-            <element signature="e#24#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="257">
+          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sensorProgram.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="268">
           <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="e#25#41#0" expanded="true" />
@@ -868,28 +882,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/databaseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        <state relative-caret-position="380">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/serverManager.py">
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2454">
-          <caret line="201" column="27" lean-forward="true" selection-start-line="201" selection-start-column="27" selection-end-line="201" selection-end-column="27" />
+        <state relative-caret-position="395">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alarmProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
           <folding>
-            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#24#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compareProgram.py">
+    <entry file="file://$PROJECT_DIR$/serverManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+        <state relative-caret-position="363">
+          <caret line="200" column="141" selection-start-line="200" selection-start-column="141" selection-end-line="200" selection-end-column="141" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

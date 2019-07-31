@@ -167,9 +167,9 @@ class ServerManager(threading.Thread):
             if split_msg[1] == "enroll":
                 key = self.getUsersKey(client)
                 self.db.updateQuery(
-                    'insert into fingerprint (finger, dong, ho) values(%s, %s, %s, %s) on duplicate key '
+                    'insert into fingerprint (finger, dong, ho) values(%s, %s, %s) on duplicate key '
                     'update finger = %s, dong = %s, ho = %s',
-                    (key, split_msg[2], self.users[key]['dong'], self.users[key]['ho'], split_msg[2], self.users[key]['dong'], self.users[key]['ho']))
+                    (split_msg[2], self.users[key]['dong'], self.users[key]['ho'], split_msg[2], self.users[key]['dong'], self.users[key]['ho']))
             elif split_msg[1] == "image":
                 data = {'title': '네이봇 [도어락]', 'message': split_msg[3] + '에 도어락 틀림이 감지되었습니다.', 'ho': self.users[self.getUsersKey(client)]['ho'], 'dong': self.users[self.getUsersKey(client)]['dong']}
                 requests.post('http://simddong.ga:5001/sendfcm_ho_dong', data=json.dumps(data), headers={'Content-type': 'application/json', 'Accept': 'text/plain'})
@@ -181,39 +181,56 @@ class ServerManager(threading.Thread):
     def runProgram(self, client, program, function, type, parameter):
         if program == 1:
             if function == 1:
+                strs = ''
                 if type == 1:
                     if isinstance(parameter['date-time'], dict):
                         self.alarm.addAlarm2(self.alarm.getDatetime(parameter['date-time']['startDateTime']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']['startDateTime']) + '에 알람을 맞췄습니다.'
+                        print(self.alarm.dateToString(parameter['date-time']['startDateTime']))
                     else:
                         self.alarm.addAlarm2(self.alarm.getDatetime(parameter['date-time']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']) + '에 알람을 맞췄습니다.'
+                        print(self.alarm.dateToString(parameter['date-time']))
                     self.sendMessage(client, 'getalarm\t' + self.alarm.loadAlarm(self.getUsersKey(client)))
+                    return strs
                 if type == 2:
                     if isinstance(parameter['date-time'], dict):
-                        self.alarm.addAlarm(self.alarm.getDatetime(parameter['date-time']['startDateTime']), parameter['AlarmContent'], self.getUsersKey(client))
+                        self.alarm.addAlarm(self.alarm.getDatetime(parameter['date-time']['startDateTime']), self.alarm.contentAnal(parameter['AlarmContent']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']['startDateTime']) + '에 ' + self.alarm.contentAnal(parameter['AlarmContent']) + ' 알람을 맞췄습니다.'
                     else:
-                        self.alarm.addAlarm(self.alarm.getDatetime(parameter['date-time']), parameter['AlarmContent'], self.getUsersKey(client))
+                        self.alarm.addAlarm(self.alarm.getDatetime(parameter['date-time']), self.alarm.contentAnal(parameter['AlarmContent']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']) + '에 ' + self.alarm.contentAnal(parameter['AlarmContent']) + ' 알람을 맞췄습니다.'
                     self.sendMessage(client, 'getalarm\t' + self.alarm.loadAlarm(self.getUsersKey(client)))
+                    return strs
             elif function == 2:
                 if type == 1:
                     if isinstance(parameter['date-time'], dict):
                         self.alarm.removeAlarm(self.alarm.getDatetime(parameter['date-time']['startDateTime']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']['startDateTime']) + ' 알람을 삭제하였습니다.'
                     else:
                         self.alarm.removeAlarm(self.alarm.getDatetime(parameter['date-time']), self.getUsersKey(client))
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']) + ' 알람을 삭제하였습니다.'
                     self.sendMessage(client, 'getalarm\t' + self.alarm.loadAlarm(self.getUsersKey(client)))
+                    return strs
             elif function == 3:
                 if type == 1:
                     time1 = None
                     time2 = None
                     if isinstance(parameter['date-time'], dict):
                         time1 = self.alarm.getDatetime(parameter['date-time']['startDateTime'])
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']['startDateTime']) + ' 알람을 '
                     else:
                         time1 = self.alarm.getDatetime(parameter['date-time'])
+                        strs = 'a\t' + self.alarm.dateToString(parameter['date-time']) + ' 알람을 '
                     if isinstance(parameter['date-time1'], dict):
                         time2 = self.alarm.getDatetime(parameter['date-time1']['startDateTime'])
+                        strs += self.alarm.dateToString(parameter['date-time1']['startDateTime']) + ' 로 수정하였습니다.'
                     else:
                         time2 = self.alarm.getDatetime(parameter['date-time1'])
+                        strs += self.alarm.dateToString(parameter['date-time1']) + ' 로 수정하였습니다.'
                     self.alarm.updateAlarm(time1, time2, self.getUsersKey(client))
                     self.sendMessage(client, 'getalarm\t' + self.alarm.loadAlarm(self.getUsersKey(client)))
+                    return strs
 
 
         elif program == 2:
