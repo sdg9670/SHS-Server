@@ -55,6 +55,20 @@ class ServerManager(threading.Thread):
         print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
 
         while True:
+            try:
+                data = client.recv(size)
+                if data:
+                    self.searchProgram(client, str(data.decode('utf-8')))
+                else:
+                    raise ValueError('클라이언트 종료')
+            except Exception as e:
+                    print('[System] %s %s 종료함' % (self.users[key]['address'], self.users[key]['address']))
+                    self.removeUser(key)
+                    client.close()
+                    print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
+                    print('[System] Error: %s' % e)
+                    break
+            '''
             #try:
                 data = client.recv(size)
                 if data:
@@ -68,6 +82,7 @@ class ServerManager(threading.Thread):
                     print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
                     print('[System] Error: %s' % e)
             #       break
+            '''
 
 
     def getSocket(self):
