@@ -20,7 +20,7 @@ class CurtainProgram(threading.Thread):
         while True:
             print('커튼 정보 전송 요청')
             self.server.sendMessageForType(3, 'requestinfo')
-            time.sleep(10)
+            time.sleep(30)
 
     def updateCurtainsData(self, name, msg):
         # split_msg[2] 열림/닫힘, split_msg[3] 온도, split_msg[4] 습도, split_msg[5] 강우량, split_msg[6] 먼지

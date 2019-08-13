@@ -19,19 +19,23 @@ class NaturalLanguage():
 
         for key in response.query_result.parameters:
             key2_data = {}
-            for key2 in response.query_result.parameters[key.encode()]:
-                if len('{}'.format(key2)) > 1:
-                    key2_data['{}'.format(key2)] = response.query_result.parameters[key.encode()][key2.encode()]
-            if len(key2_data.keys()) > 0:
-                if len(key2_data.keys()) == 1:
-                    for k, v in key2_data.items():
-                        value = v
-                else:
-                    value = key2_data
+            if isinstance(response.query_result.parameters[key.encode()], dict) is False:
+                parameter_dict['{}'.format(key)] = '{}'.format(response.query_result.parameters[key.encode()])
+                print('parameter_dict['+'{}'.format(key)+']{} = '.format(response.query_result.parameters[key.encode()]))
             else:
-                value = '{}'.format(response.query_result.parameters[key.encode()])
-            if value != '':
-                parameter_dict['{}'.format(key)] = value
+                for key2 in response.query_result.parameters[key.encode()]:
+                    if len('{}'.format(key2)) > 1:
+                        key2_data['{}'.format(key2)] = response.query_result.parameters[key.encode()][key2.encode()]
+                if len(key2_data.keys()) > 0:
+                    if len(key2_data.keys()) == 1:
+                        for k, v in key2_data.items():
+                            value = v
+                    else:
+                        value = key2_data
+                else:
+                    value = '{}'.format(response.query_result.parameters[key.encode()])
+                if value != '':
+                    parameter_dict['{}'.format(key)] = value
 
         self.dic = {
                 'parameters': parameter_dict,

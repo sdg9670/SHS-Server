@@ -14,6 +14,58 @@ def json_default(value):
     if isinstance(value, (datetime.datetime)):
         return value.__str__()
 
+@app.route('/doorlock_image', methods=['GET'])
+def GetDoorLockImage():
+    dong = request.args.get('dong')
+    ho = request.args.get('ho')
+    data = None
+    data = db.executeQuery("select * from doorlock_image where dong = %s and ho = %s order by id desc", (dong, ho))
+    print(str(json.dumps(data, ensure_ascii=False, default=json_default)))
+    return json.dumps(data, ensure_ascii=False, default=json_default)
+
+@app.route('/window', methods=['GET'])
+def SelectWindow():
+   data = db.executeQuery2("select `window`.*, `client`.`name` from `window`, `client` where `client`.id = `window`.id;")
+   return json.dumps(data, ensure_ascii=False, default=json_default)
+
+
+@app.route('/curtain', methods=['PUT'])
+def putCurtain():
+   print(request.json)
+   lux_over = request.json['lux_over']
+   lux_set = request.json['lux_set']
+   id = request.json['id']
+   db.updateQuery("update `curtain` SET lux_set=%s, lux_over=%s where id=%s",
+                  (lux_set,lux_over,id))
+   return 'sucess'
+
+@app.route('/window', methods=['PUT'])
+def putWindow():
+   print(request.json)
+   temp_over = request.json['temp_over']
+   temp_set = request.json['temp_set']
+   humi_over = request.json['humi_over']
+   humi_set = request.json['humi_set']
+   rain_over = request.json['rain_over']
+   rain_set = request.json['rain_set']
+   dust_over = request.json['dust_over']
+   dust_set = request.json['dust_set']
+   id = request.json['id']
+   db.updateQuery("update `window` SET temp_set=%s, temp_over=%s, humi_set=%s, humi_over=%s, rain_set=%s, rain_over=%s, dust_set=%s, dust_over=%s where id=%s",
+                  (temp_set,temp_over,humi_set,humi_over,rain_set,rain_over,dust_set,dust_over,id))
+   return 'sucess'
+
+@app.route('/curtain', methods=['GET'])
+def SelectCurtain():
+   data = db.executeQuery2("select `curtain`.*, `client`.`name` from `curtain`, `client` where `client`.id = `curtain`.id;")
+   return json.dumps(data, ensure_ascii=False, default=json_default)
+
+@app.route('/sensor', methods=['GET'])
+def SelectSensor():
+   data = db.executeQuery2("select * from sensor")
+   return json.dumps(data, ensure_ascii=False, default=json_default)
+
+'''========================================='''
 
 '''친구 요청 목록'''
 
@@ -21,6 +73,7 @@ def json_default(value):
 @app.route('/requestFriend', methods=['GET'])
 def GetRequestFriend():
     id = request.args.get('id')
+
     data = db.executeQuery("select c.id, c.someid as clientid, c.clientid as someid, c.newmsg, " +
                            "cli.name as somename, cli.dong as somedong, cli.ho as someho, cli.id_name as someidname " +
                            "from contact c inner join `client` cli on cli.id = c.clientid " +
@@ -104,6 +157,13 @@ def friendCheck2():
 
 '''===================================================================================================================='''
 
+@app.route('/speaker', methods=['GET'])
+def GetSpeaker():
+   dong = request.args.get('dong')
+   ho = request.args.get('ho')
+   data = None
+   data = db.executeQuery("select* from client where dong = %s and ho = %s and type=1", (dong, ho))
+   return json.dumps(data, ensure_ascii=False, default=json_default)
 
 @app.route('/sendfcm_ho_dong', methods=['POST'])
 def sendFCM_Ho_sDong():
@@ -118,6 +178,7 @@ def sendFCM_Ho_sDong():
         if i['fcm'] != None:
             data2.append(i['fcm'])
     result = push_service.notify_multiple_devices(registration_ids=data2, message_title=title, message_body=message)
+    return 'sucess'
 
 
 @app.route('/sendfcm_dong', methods=['POST'])
@@ -133,6 +194,7 @@ def sendFCM_Dong():
             data2.append(i['fcm'])
     result = push_service.notify_multiple_devices(registration_ids=data2, message_title=title, message_body=message)
     return str(data2)
+    return 'sucess'
 
 
 @app.route('/sendfcm', methods=['POST'])
@@ -194,11 +256,11 @@ def GetWriting():
     data = None
     if id is not None:
         data = db.executeQuery(
-            "SELECT writing.*, (SELECT COUNT(*) FROM comment WHERE writing_id=writing.id AND `show` = 1) AS comment_count, (SELECT name FROM client WHERE id=writing.writer) AS writer_name from writing where id = %s and `show` = 1",
+            "SELECT writing.*, (SELECT COUNT(*) FROM comment WHERE writing_id=writing.id AND `show` = 1) AS comment_count, (SELECT name FROM client WHERE id=writing.writer) AS writer_name from writing where id = %s and `show` = 1 order by id desc",
             id)
     else:
         data = db.executeQuery(
-            "SELECT writing.*, (SELECT COUNT(*) FROM comment WHERE writing_id=writing.id AND `show` = 1) AS comment_count, (SELECT name FROM client WHERE id=writing.writer) AS writer_name from writing where board_id = %s and `show` = 1",
+            "SELECT writing.*, (SELECT COUNT(*) FROM comment WHERE writing_id=writing.id AND `show` = 1) AS comment_count, (SELECT name FROM client WHERE id=writing.writer) AS writer_name from writing where board_id = %s and `show` = 1 order by id desc",
             board_id)
     return json.dumps(data, ensure_ascii=False, default=json_default)
 
@@ -350,4 +412,6 @@ def getWriting_vote():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)

@@ -51,12 +51,12 @@ class AlarmProgram():
 
     def contentAnal(self, string):
         a = ''
-        if string.find('으라고', len(string) - 3):
+        if string.find('으라고', len(string) - 3) > 0:
             a = string.split('으라고')[0] + '기'
-        elif string.find('라고', len(string) - 2):
+        elif string.find('라고', len(string) - 2) > 0:
             a = string.split('라고')[0] + '기'
-        elif string.find('게', len(string) - 1):
+        elif string.find('게', len(string) - 1) > 0:
             a = string.split('게')[0] + '기'
-        elif string.find('로', len(string) - 1):
+        elif string.find('로', len(string) - 1) > 0:
             a = string.split('로')[0]
         return a

@@ -4,7 +4,13 @@
     <list default="true" id="24f2166a-5050-4f04-993c-cef24f973ec0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web.py" beforeDir="false" afterPath="$PROJECT_DIR$/Web.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alarmProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/alarmProgram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curtainProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/curtainProgram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/databaseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naturalLanguage.py" beforeDir="false" afterPath="$PROJECT_DIR$/naturalLanguage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensorProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensorProgram.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serverManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/serverManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windowProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/windowProgram.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serverManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+            <state relative-caret-position="19">
+              <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -29,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3933">
-              <caret line="352" column="49" selection-start-line="352" selection-start-column="49" selection-end-line="352" selection-end-column="49" />
+            <state relative-caret-position="192">
+              <caret line="59" column="77" selection-start-line="59" selection-start-column="77" selection-end-line="59" selection-end-column="77" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -39,10 +45,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/windowProgram.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="665">
+              <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+              <folding>
+                <element signature="e#25#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/curtainProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+            <state relative-caret-position="532">
+              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding>
                 <element signature="e#25#41#0" expanded="true" />
               </folding>
@@ -51,31 +78,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compareProgram.py">
+        <entry file="file://$USER_HOME$/Downloads/Untitled">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
-              <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+            <state relative-caret-position="76">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alarmProgram.py">
+        <entry file="file://$USER_HOME$/Downloads/Untitled (1)">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1121">
-              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-              <folding>
-                <element signature="e#24#53#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="152">
+              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py">
+        <entry file="file://$USER_HOME$/Downloads/Untitled (2)">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2014">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="285">
+              <caret line="15" selection-end-line="406" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -95,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/databaseManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="1045">
+              <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
               </folding>
@@ -115,14 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>True</find>
-      <find>print</find>
-      <find>input</find>
-      <find>curtain	inputsql</find>
-      <find>update</find>
-      <find>SendWritingUpdate</find>
-      <find>modi</find>
-      <find>modify</find>
       <find>update_time</find>
       <find>getInClient</find>
       <find>getDoorlock</find>
@@ -145,6 +161,14 @@
       <find>date</find>
       <find>contentAnal</find>
       <find>fingerprint</find>
+      <find>analMsg</find>
+      <find>simddong.ga</find>
+      <find>sendfcm_ho_dong</find>
+      <find>push_service</find>
+      <find>image</find>
+      <find>SelectClient</find>
+      <find>runProgram</find>
+      <find>curtain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,7 +181,6 @@
         <option value="$PROJECT_DIR$/WordData/알람추가.txt" />
         <option value="$PROJECT_DIR$/inputWordData.py" />
         <option value="$PROJECT_DIR$/dialogFlow.py" />
-        <option value="$PROJECT_DIR$/naturalLanguage.py" />
         <option value="$USER_HOME$/Downloads/wiki_crawler.py" />
         <option value="$PROJECT_DIR$/wikiCrawler.py" />
         <option value="$PROJECT_DIR$/asdasd.py" />
@@ -180,23 +203,26 @@
         <option value="$PROJECT_DIR$/Test/main.py" />
         <option value="$PROJECT_DIR$/Test/testm.py" />
         <option value="$PROJECT_DIR$/Test/threaddb.py" />
-        <option value="$PROJECT_DIR$/windowProgram.py" />
-        <option value="$PROJECT_DIR$/sensorProgram.py" />
-        <option value="$PROJECT_DIR$/databaseManager.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/compareProgram.py" />
-        <option value="$PROJECT_DIR$/curtainProgram.py" />
+        <option value="$PROJECT_DIR$/naturalLanguage.py" />
         <option value="$PROJECT_DIR$/alarmProgram.py" />
+        <option value="$PROJECT_DIR$/windowProgram.py" />
+        <option value="$PROJECT_DIR$/curtainProgram.py" />
+        <option value="$USER_HOME$/Desktop/exexexex.py" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/exexex3123.py" />
+        <option value="$PROJECT_DIR$/databaseManager.py" />
+        <option value="$PROJECT_DIR$/sensorProgram.py" />
         <option value="$PROJECT_DIR$/serverManager.py" />
         <option value="$PROJECT_DIR$/Web.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="370" />
-    <option name="y" value="191" />
-    <option name="width" value="1935" />
-    <option name="height" value="1100" />
+    <option name="x" value="712" />
+    <option name="y" value="-10" />
+    <option name="width" value="990" />
+    <option name="height" value="535" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,7 +286,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Web (1)">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Web (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SHS-Server" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -357,9 +383,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.Web (1)" />
         <item itemvalue="Python.Web" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.testm" />
       </list>
     </recent_temporary>
@@ -444,6 +470,12 @@
       <workItem from="1564386984651" duration="5152000" />
       <workItem from="1564540827988" duration="5228000" />
       <workItem from="1564577574554" duration="1125000" />
+      <workItem from="1564621420786" duration="19270000" />
+      <workItem from="1564657847755" duration="1523000" />
+      <workItem from="1564738364776" duration="599000" />
+      <workItem from="1565587462974" duration="4231000" />
+      <workItem from="1565616058275" duration="6467000" />
+      <workItem from="1565658406687" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1554459392061</created>
@@ -543,11 +575,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564559401006</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="온습도 가스로 창문 조절 완료">
+      <created>1564621541688</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1564621541688</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293022000" />
+    <option name="totallyTimeSpent" value="326338000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -560,19 +599,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22911051" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16172507" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32964602" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.37936047" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.18604651" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.12889813" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" weight="0.26889536" />
+      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49925372" weight="0.26598838" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32952183" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32743362" />
@@ -627,10 +667,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SHS_Server$weatherToday.coverage" NAME="weatherToday Coverage Results" MODIFIED="1558870012357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
-    <SUITE FILE_PATH="coverage/SHS_Server$Web__1_.coverage" NAME="Web (1) Coverage Results" MODIFIED="1564577866075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SHS_Server$Web__1_.coverage" NAME="Web (1) Coverage Results" MODIFIED="1565661057873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$inputWordData.coverage" NAME="inputWordData Coverage Results" MODIFIED="1557223973639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SHS_Server$main.coverage" NAME="main Coverage Results" MODIFIED="1564559481824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SHS_Server$Web.coverage" NAME="Web Coverage Results" MODIFIED="1564577860680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SHS_Server$Web.coverage" NAME="Web Coverage Results" MODIFIED="1565593245083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SHS_Server$main.coverage" NAME="main Coverage Results" MODIFIED="1565661331600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$asdasd.coverage" NAME="asdasd Coverage Results" MODIFIED="1558860917106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$test.coverage" NAME="test Coverage Results" MODIFIED="1557921319031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SHS_Server$weatherAfterTommorow.coverage" NAME="weatherAfterTommorow Coverage Results" MODIFIED="1558870141690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
@@ -639,12 +679,6 @@
     <SUITE FILE_PATH="coverage/SHS_Server$weatherTomorrow.coverage" NAME="weatherTomorrow Coverage Results" MODIFIED="1558869910543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/201545291/threading.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/57761119/builtins.py" />
-    <entry file="file://$PROJECT_DIR$/WordData/창문열기.txt" />
-    <entry file="file://$PROJECT_DIR$/WordData/커튼닫기.txt" />
-    <entry file="file://$PROJECT_DIR$/WordData/커튼열기.txt" />
-    <entry file="file://$PROJECT_DIR$/WordData/알람삭제.txt" />
     <entry file="file://$PROJECT_DIR$/WordData/알람추가.txt" />
     <entry file="file://$PROJECT_DIR$/WordData/창문닫기.txt" />
     <entry file="file://$PROJECT_DIR$/WordData/알람수정.txt" />
@@ -708,16 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naturalLanguage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding>
-            <element signature="e#25#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/werkzeug/wrappers/base_request.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8284">
@@ -752,10 +776,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/windowProgram.py">
+    <entry file="file://$USER_HOME$/Desktop/exexex.py" />
+    <entry file="file://$USER_HOME$/Desktop/exexex3123.py" />
+    <entry file="file://$PROJECT_DIR$/compareProgram.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="1748">
+          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2014">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alarmProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+          <folding>
+            <element signature="e#24#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/exexexex.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/exexex3123.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/databaseManager.py" />
+    <entry file="file://$PROJECT_DIR$/dialog.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naturalLanguage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#25#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -769,40 +828,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dialog.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/curtainProgram.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        <state relative-caret-position="532">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding>
             <element signature="e#25#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compareProgram.py">
+    <entry file="file://$USER_HOME$/Downloads/Untitled">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+        <state relative-caret-position="76">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alarmProgram.py">
+    <entry file="file://$USER_HOME$/Downloads/Untitled (1)">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="152">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/57761119/1536490563/pymysql/err.py">
+    <entry file="file://$USER_HOME$/Downloads/Untitled (2)">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2014">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="285">
+          <caret line="15" selection-end-line="406" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -818,8 +871,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/databaseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="1045">
+          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
           </folding>
@@ -828,38 +881,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/serverManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+        <state relative-caret-position="19">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/exexex.py">
+    <entry file="file://$PROJECT_DIR$/windowProgram.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" lean-forward="true" selection-end-line="377" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/exexex3123.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="353" selection-start-line="105" selection-end-line="353" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="399">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3933">
-          <caret line="352" column="49" selection-start-line="352" selection-start-column="49" selection-end-line="352" selection-end-column="49" />
+        <state relative-caret-position="192">
+          <caret line="59" column="77" selection-start-line="59" selection-start-column="77" selection-end-line="59" selection-end-column="77" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

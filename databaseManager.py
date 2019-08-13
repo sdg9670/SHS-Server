@@ -16,6 +16,7 @@ class DatabaseManager():
 
     def updateQuery(self, content, value):
         conn = self.mypool.connect()
+        conn.autocommit(True)
         try:
             with conn.cursor() as cursor:
                 cursor.execute(content, value)
@@ -29,6 +30,7 @@ class DatabaseManager():
     def executeQuery2(self, content):
         data = None
         conn = self.mypool.connect()
+        conn.autocommit(True)
         try:
             with conn.cursor() as cursor:
                 cursor.execute(content)
@@ -40,6 +42,7 @@ class DatabaseManager():
     def executeQuery(self, content, value):
         data = None
         conn = self.mypool.connect()
+        conn.autocommit(True)
         try:
             with conn.cursor() as cursor:
                 cursor.execute(content, value)
@@ -51,6 +54,7 @@ class DatabaseManager():
     def executeOneQuery(self, content, value):
         data = None
         conn = self.mypool.connect()
+        conn.autocommit(True)
         try:
             with conn.cursor() as cursor:
                 cursor.execute(content, value)
