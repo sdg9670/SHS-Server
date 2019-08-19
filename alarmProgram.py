@@ -44,6 +44,7 @@ class AlarmProgram():
         return json.dumps(dic, default=self.json_default)
 
     def getDatetime(self, dt):
+        print(dt)
         return datetime.strptime(dt, '%Y-%m-%dT%H:%M:%S+09:00')
 
     def dateToString(self, dt):

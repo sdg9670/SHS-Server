@@ -289,6 +289,8 @@ def postComment():
     writing_id = request.json['writing_id']
     db.updateQuery("insert into `comment`(writer, content ,writing_id) values(%s,%s,%s)",
                    (writer, content, writing_id))
+    data = db.executeQuery("SELECT fcm FROM client WHERE id = (Select writer from writing where id=%s)", (writing_id,))
+    result = push_service.notify_single_device(registration_id=data[0]['fcm'], message_title="댓글 알림", message_body=str(content))
     return 'sucess'
 
 

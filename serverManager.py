@@ -72,18 +72,15 @@ class ServerManager(threading.Thread):
                 if data:
                     self.searchProgram(client, str(data.decode('utf-8')))
                 else:
-
-
-
-                    raise ValueError('클라이언트 종료')
+                   raise ValueError('클라이언트 종료')
             except Exception as e:
-                    print('[System] %s %s 종료함' % (self.users[key]['address'], self.users[key]['address']))
-                    self.removeUser(key)
-                    client.close()
-                    print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
-                    print('[System] Error: %s' % e)
-                    break
-            '''
+                print('[System] %s %s 종료함' % (self.users[key]['address'], self.users[key]['address']))
+                self.removeUser(key)
+                client.close()
+                print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
+                print('[System] Error: %s' % e)
+                break
+        '''
         #try:
             data = client.recv(size)
             if data:
@@ -96,7 +93,8 @@ class ServerManager(threading.Thread):
                 client.close()
                 print('[System] 서버 클라이언트 수 [%d]' % len(self.users))
                 print('[System] Error: %s' % e)
-                break'''
+                break
+        '''
 
     def getSocket(self):
         return self.sock
@@ -159,6 +157,11 @@ class ServerManager(threading.Thread):
             elif split_msg[1] == "help":
                 data = {'title': '네이봇 [도움요청]', 'message': str(self.users[self.getUsersKey(client)]['dong']) + '동 ' +  str(self.users[self.getUsersKey(client)]['ho']) + '호에서 긴급 도움을 요청하였습니다.', 'dong': self.users[self.getUsersKey(client)]['dong']}
                 requests.post('http://simddong.ga:5000/sendfcm_dong', data=json.dumps(data), headers={'Content-type': 'application/json', 'Accept': 'text/plain'})
+                for k in self.users:
+                    if self.users[k]['type'] == 0:
+                        if self.users[k]['dong'] == self.users[self.getUsersKey(client)]['dong']:
+                            if self.users[k]['ho'] != self.users[self.getUsersKey(client)]['ho']:
+                                self.sendMessage(self.users[k]['client'], 'msg\ta\t'+str(self.users[self.getUsersKey(client)]['dong'])+'동 '+str(self.users[self.getUsersKey(client)]['ho'])+'호에서 긴급 도움을 요청하였습니다.')
                 self.sendMessage(client, 'msg\ta\t도움 요청이 전송되었습니다.')
         elif split_msg[0] == "sensor":
             if split_msg[1] == "inputsql":
@@ -226,6 +229,11 @@ class ServerManager(threading.Thread):
             elif split_msg[1] == "help":
                 data = {'title': '네이봇 [도움요청]', 'message': str(self.users[self.getUsersKey(client)]['dong']) + '동 ' +  str(self.users[self.getUsersKey(client)]['ho']) + '호에서 긴급 도움을 요청하였습니다.', 'dong': self.users[self.getUsersKey(client)]['dong']}
                 requests.post('http://simddong.ga:5000/sendfcm_dong', data=json.dumps(data), headers={'Content-type': 'application/json', 'Accept': 'text/plain'})
+                for k in self.users:
+                    if self.users[k]['type'] == 0:
+                        if self.users[k]['dong'] == self.users[self.getUsersKey(client)]['dong']:
+                            if self.users[k]['ho'] != self.users[self.getUsersKey(client)]['ho']:
+                                self.sendMessage(self.users[k]['client'], 'msg\ta\t'+str(self.users[self.getUsersKey(client)]['dong'])+'동 '+str(self.users[self.getUsersKey(client)]['ho'])+'호에서 긴급 도움을 요청하였습니다.')
                 self.sendMessage(client, 'msg\ta\t도움 요청이 전송되었습니다.')
 
     def runProgram(self, client, program, function, type, parameter):
